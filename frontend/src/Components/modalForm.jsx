@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import data2 from '../assets/table2.js';
+import axios from 'axios';
 
 const style = {
     position: 'absolute',
@@ -30,13 +31,16 @@ const style = {
       const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
       };
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
-        //if (validate()) {
-          // Handle form submission
-          console.log(form);
-          props.handleClose();
-        //}
+        try {
+            const response = await axios.post('https://accredian-backend-task-1gk1.onrender.com/referrals', form);
+            console.log('Referral submitted successfully:', response.data);
+            props.handleClose();
+          } catch (error) {
+            console.error('Error submitting referral:', error);
+            setErrors({ submit: 'Error submitting referral. Please try again.' });
+          }
       };
     return (
       <div>
