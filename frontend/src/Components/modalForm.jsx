@@ -74,10 +74,14 @@ export default function FormModal(props) {
     }
 
     // Validate refereeEmail (optional)
-    if (form.refereeEmail.trim() && !/\S+@\S+\.\S+/.test(form.refereeEmail)) {
+    if (form.refereeEmail.trim()) {
+      newErrors.refereeEmail = 'Referrer Email is required';
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(form.refereeEmail)) {
       newErrors.refereeEmail = 'Invalid email format';
       valid = false;
     }
+
 
     // Validate program
     if (!form.program.trim()) {
