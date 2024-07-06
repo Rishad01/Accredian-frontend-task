@@ -8,6 +8,11 @@ import ArrowDropDownSharpIcon from '@mui/icons-material/ArrowDropDownSharp';
 import data1 from './assets/table1.js';
 import data2 from './assets/table2.js';
 import FormModal from './Components/modalForm.jsx';
+import SchoolIcon from '@mui/icons-material/School';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import DescriptionIcon from '@mui/icons-material/Description';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+
 function App() {
   const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -18,19 +23,19 @@ function App() {
         <Toolbar>
           <img alt="Company Logo" src={Logo}  />
           <Button variant="contained" sx={{ml:2}} color="primary" size="small">
-          <Typography sx={{textTransform:'none'}} variant="button">
+          <Typography  sx={{textTransform:'none'}} variant="button">
           Courses 
           </Typography><ArrowDropDownSharpIcon /></Button>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Link href="#" underline="none">
-            <Typography  color="black" sx={{textTransform:'none'}} variant="link">
+            <Typography  variant="body2" color="black" sx={{textTransform:'none'}} variant="link">
             Refer & Earn
             </Typography></Link>
             <Link href="#" underline="none">
-            <Typography color="black" sx={{textTransform:'none'}} variant="link">Resources</Typography></Link>
+            <Typography  variant="body2" color="black" sx={{textTransform:'none'}} variant="link">Resources</Typography></Link>
             <Link href="#" underline="none">
-            <Typography color="black" sx={{textTransform:'none'}} variant="link">About Us</Typography></Link>
+            <Typography  variant="body2" color="black" sx={{textTransform:'none'}} variant="link">About Us</Typography></Link>
             <Button variant="contained" color="secondary" size="small">
             <Typography  sx={{textTransform:'none'}} variant="button">
             Login</Typography>
@@ -58,7 +63,7 @@ function App() {
             sx={{
               display: "flex",
               alignItems: "center",
-              bgcolor: "#f3e5f5",
+              bgcolor: "#EEF5FF",
               justifyContent: "center",
               flexShrink: 0,
               borderRadius: "999px",
@@ -191,32 +196,72 @@ function App() {
       </Container>
     </Box>
     {/*process*/}
-    <Box sx=
-       {{mt:2,py:3,bgcolor: '#EEF5FF', width: '100%' }}>
-       <Container
-       maxWidth="md" sx={{}}
-       >
-       <Box component="img"
-            src={Process}
-            alt="processImg"
-            sx={{
-              width: '100%',
-              position: 'relative',
-              objectFit: 'cover',
-              mt: 5,
-              mb: 5,}}
-       />
-       
-       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-          <Button  onClick={handleOpen} variant="contained" color="primary" size="medium">
-            <Typography sx={{ textTransform: 'none' }} variant="button">
-              Refer Now
-            </Typography>
-          </Button>
-        </Box>
-        
-       </Container>
+    <Box sx={{ mt: 2, py: 3, bgcolor: '#EEF5FF', width: '100%' }}>
+  <Container maxWidth="md" sx={{ position: 'relative' }}>
+    <Box component="img"
+      src={Process}
+      alt="processImg"
+      sx={{
+        width: '100%',
+        position: 'relative',
+        objectFit: 'cover',
+        mt: 5,
+        mb: 5,
+      }}
+    />
+
+    {/* Content for the first circle */}
+    <Box sx={{
+      position: 'absolute',
+      display:'flex',
+      top: '40%',
+      left: '23%',
+      transform: 'translate(-50%, -50%)',
+      p: 2,
+      borderRadius: '50%',
+      textAlign: 'center'
+    }}>
+      <PersonAddAlt1Icon color="primary" size="large"/>
     </Box>
+
+    {/* Content for the second circle */}
+    <Box sx={{
+      position: 'absolute',
+      display:'flex',
+      top: '40%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      p: 2,
+      borderRadius: '50%',
+      textAlign: 'center'
+    }}>
+      <DescriptionIcon color="primary" size="large"/>
+    </Box>
+
+    {/* Content for the third circle */}
+    <Box sx={{
+      position: 'absolute',
+      display:'flex',
+      top: '40%',
+      left: '76%',
+      transform: 'translate(-50%, -50%)',
+      p: 2,
+      borderRadius: '50%',
+      textAlign: 'center'
+    }}>
+      <AccountBalanceWalletIcon color="primary" size="large"/>
+    </Box>
+
+    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+      <Button onClick={handleOpen} variant="contained" color="primary" size="medium">
+        <Typography sx={{ textTransform: 'none' }} variant="button">
+          Refer Now
+        </Typography>
+      </Button>
+    </Box>
+  </Container>
+</Box>
+
     {/*benefits*/}
     <Box sx=
        {{mt:2, width: '100%' }}>
@@ -243,7 +288,7 @@ function App() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>All Programs</TableCell>
+                  <TableCell  sx={{ bgcolor: 'primary.main' }}>All Programs</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -268,15 +313,15 @@ function App() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell>Programs</TableCell>
-                  <TableCell>Referrer Bonus</TableCell>
-                  <TableCell>Referee Bonus</TableCell>
+                  <TableCell  sx={{ bgcolor: 'primary.main' }}>Programs</TableCell>
+                  <TableCell  sx={{ bgcolor: 'primary.main' }}>Referrer Bonus</TableCell>
+                  <TableCell  sx={{ bgcolor: 'primary.main' }}>Referee Bonus</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {data2.map((row) => (
                   <TableRow key={row.index}>
-                    <TableCell>{row.program}</TableCell>
+                    <TableCell><SchoolIcon/> {row.program}</TableCell>
                     <TableCell>{row.referrerBonus}</TableCell>
                     <TableCell>{row.refereeBonus}</TableCell>
                   </TableRow>
@@ -301,6 +346,33 @@ function App() {
           open={open}
           handleClose={handleClose}
         />}
+
+<Box
+  sx={{
+    width: '100%',
+    bgcolor: 'black',
+    py: 3,
+    mt: 5,
+  }}
+>
+  <Container maxWidth="md">
+    <Typography variant="body2" color="white" align="center">
+      © {new Date().getFullYear()} Your Company. All rights reserved.
+    </Typography>
+    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
+      <Link href="#" sx={{ color: 'transparent', mx: 1 }}>
+        <Typography color='white' sx={{textTransform:'none', mx: 1 }} variant="body2">Privacy Policy</Typography>
+      </Link>
+      <Link href="#" sx={{ color: 'transparent', mx: 1 }}>
+        <Typography color='white' sx={{textTransform:'none', mx: 1 }} variant="body2">Terms of Service</Typography>
+      </Link>
+      <Link href="#">
+        <Typography color='white' sx={{textTransform:'none', mx: 1 }} variant="body2">Contact Us</Typography>
+      </Link>
+    </Box>
+  </Container>
+</Box>
+
     </Box>
   );
 }
